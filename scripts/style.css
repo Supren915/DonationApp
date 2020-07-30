@@ -1,0 +1,54 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: rgba(45, 89, 170, 0.801);
+}
+
+.MainForm {
+    max-width: 320px;
+    padding: 40px;
+    margin: 20px auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+}
+
+input[type="text"] {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 2px;
+    background: rgb(218, 215, 173);
+}
+
+input[type="email"] {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 2px black;
+    background: rgb(218, 215, 173);
+}
+
+input[type="button"] {
+    width: 150px;
+    height: 50px;
+    border: none;
+}
+
+input:focus {
+    background: white;
+}
+
+.btnSubmit {
+    width: 200px;
+    height: 40px;
+    border: none;
+}
+

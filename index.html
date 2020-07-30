@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Donation Page</title>
+        <link rel="stylesheet" href="/static/style.css">
+        <script src="/static/app.js"></script>
+        <script src="/static/numeral.min.js"></script>
+
+        <script type="text/javascript">
+            function donationValue() {
+                var donateAmount = document.getElementById("donationAmount").value;
+                var newDonationAmt = numeral(donateAmount);
+                var newDonationAmtTwo = numeral(donateAmount); // Create 2nd object for adding Tax and fee
+                // Get Tax Value
+                var taxAmount = newDonationAmt.multiply(.029).value();
+                // Add Tax and .30 cent fee
+                newDonationAmt = newDonationAmtTwo.add(taxAmount + .30).format('$0,0.00');
+                
+                document.getElementById("finalAmount").value = newDonationAmt;
+            }
+        </script>
+    </head>
+
+<body>
+    <div id="DonationForm" class="MainForm">
+        <h1>Make a Donation</h1>
+        <form action="/submit" onsubmit="return validateForm()" method="post">
+            <label id="frmMessage" style="color: red;background-color: beige;"></label> <br>
+            <input type="text" id="firstName" name="fName" value="" placeholder="First Name" maxlength="50"/>
+            <input type="text" id="lastName" name="lName" value="" placeholder="Last Name" maxlength="50"/>
+            <input type="email" id="emailAddress" name="emailAddress" value="" placeholder="Email Address" maxlength="50"/>
+            <input type="text" id="donationAmount" name="donationAmount" value="0" oninput="donationValue()" placeholder="Donation Amount" maxlength="10"/>
+            <input type="text" id="creditCardNumber" name="creditCardNumber" value="" placeholder="Credit Card Number" maxlength="16"/> <br>
+            <label class="tooltip">Final Donation Amount</label>
+            <input type="text" id="finalAmount" name="finalAmount"  />
+       <!-- <button type="button" class="btnDonate" onclick="validateForm()">Submit Donation</button>  -->
+            <button name="submit" id="submit" class="btnSubmit">Submit Donation</button>
+        </form>
+    </div>
+    <div id="submissionpage" class="ThankYouPage" style="display:none;">
+        <h1>Your donation has been successfully submitted!  Thank you!</h1>
+    </div>
+</body>
+</html>
